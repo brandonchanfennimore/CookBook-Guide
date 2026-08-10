@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/templates/foodmap.html" },
+    { "source": "/(.*)", "destination": "/templates/foodmap.html" }
+  ]
+}
