@@ -1,6 +1,6 @@
 # The CookBook Club 🍔
 
-An interactive map where CookBook Club members can browse, add, and manage food recommendations around NYC.
+An interactive map where CookBook Club members can browse, add, and manage food recommendations around NYC. This website is a redirected page from a separate landing website.
 
 ## Features
 
