@@ -1,3 +1,5 @@
+import { logoDataUri } from '../lib/logo';
+
 const typeConfig = [
   { cat: 'restaurant', label: 'Restaurant', emoji: '🍽️' },
   { cat: 'cafe', label: 'Café', emoji: '☕' },
@@ -14,10 +16,7 @@ export default function TopBar({ filters, filterPanelOpen, onToggleFilterPanel }
       <header>
         <div className="logo-block">
           <div className="logo-img">
-            {/* Swap in your actual logo image here */}
-            <span style={{ fontFamily: 'ClashDisplay, sans-serif', fontWeight: 800, fontSize: '1.5rem' }}>
-              CookBook Guide
-            </span>
+            <img src={logoDataUri} alt="CookBook Guide" />
           </div>
         </div>
 

@@ -1,6 +1,18 @@
+@import './fonts.css';
+
+* {
+  box-sizing: border-box;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
+}
+
+body {
+  font-family: 'Satoshi', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
 }
 
 .app-shell {
@@ -41,6 +53,7 @@ html, body, #root {
 
 /* ── SIDE PANEL ── */
 :root {
+  --cream: #FFFBF2;
   --coral: #FF6B6B;
   --yellow: #FFD93D;
   --mint: #6BCB77;
@@ -148,6 +161,7 @@ html, body, #root {
 .panel-body { padding: 20px 20px 0; }
 
 .panel-name {
+  font-family: 'ClashDisplay', sans-serif;
   font-size: 1.625rem;
   font-weight: 800;
   line-height: 1.2;
@@ -265,7 +279,14 @@ header {
 }
 
 .logo-block { display: flex; flex-direction: column; flex-shrink: 0; }
-.logo-img { height: 40px; display: flex; align-items: center; }
+.logo-img { display: flex; align-items: center; }
+.logo-img img {
+  height: 128px;
+  width: auto;
+  display: block;
+  align-self: center;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.25));
+}
 
 .header-type-row {
   display: flex;
@@ -296,7 +317,13 @@ header {
   color: var(--font);
 }
 .chip:hover { transform: translateY(-1px); }
-.chip.active { border-color: currentColor; background: var(--ink); color: #fff; }
+.chip.active { border-color: currentColor; }
+.chip[data-cat="all"].active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip[data-cat="restaurant"].active { background: #FFE5E5; border-color: var(--coral); color: var(--coral); }
+.chip[data-cat="cafe"].active { background: #FFF4CC; border-color: #E6B800; color: #996600; }
+.chip[data-cat="dessert"].active { background: #F0E5FF; border-color: var(--plum); color: var(--plum); }
+.chip[data-cat="boba"].active { background: #E5F5FF; border-color: var(--sky); color: #1a7bb5; }
+.chip[data-cat="bar"].active { background: #E5F9E8; border-color: var(--mint); color: #2d8a3a; }
 
 .search-toggle-btn {
   display: flex;
@@ -372,6 +399,7 @@ header {
 .filter-panel-close:hover { background: #E0DCD2; }
 
 .filter-panel-title {
+  font-family: 'ClashDisplay', sans-serif;
   font-size: 1.625rem;
   font-weight: 800;
   color: var(--ink);
@@ -389,6 +417,7 @@ header {
 
 .filter-section { margin-bottom: 28px; }
 .filter-section-title {
+  font-family: 'ClashDisplay', sans-serif;
   font-size: 1rem;
   font-weight: 800;
   color: rgba(26, 26, 46, 0.45);

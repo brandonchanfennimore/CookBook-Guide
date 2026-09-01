@@ -46,7 +46,9 @@ export function useFilters(places) {
   );
 
   const toggleType = (val) =>
-    setActiveTypes((s) => toggle(s, val, 'all', Object.keys(typeCounts)));
+    setActiveTypes((s) =>
+      toggle(s, val, 'all', Object.keys(typeCounts).filter((k) => k !== '__total'))
+    );
   const toggleCuisine = (val) =>
     setActiveCuisines((s) => toggle(s, val, 'all', sortedCuisines));
   const togglePrice = (val) =>
