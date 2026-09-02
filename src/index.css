@@ -579,3 +579,192 @@ header {
 }
 .price-tooltip.visible { visibility: visible; opacity: 1; }
 .price-tooltip strong { font-size: 0.72rem; color: var(--yellow); margin-bottom: 4px; }
+
+/* ── EBOARD TRIGGER ── */
+.eboard-trigger {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 2000;
+  opacity: 0.25;
+  transition: opacity 0.2s;
+}
+.eboard-trigger:hover { opacity: 1; }
+
+.gear-menu {
+  display: none;
+  position: fixed;
+  bottom: 62px;
+  left: 16px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  z-index: 2001;
+  min-width: 180px;
+  flex-direction: column;
+}
+.gear-menu.visible { display: flex; }
+.gear-menu-item {
+  padding: 12px 18px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-align: left;
+  transition: background 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gear-menu-item:hover { background: #F8F5EE; }
+.gear-menu-item.danger { color: var(--coral); }
+
+.add-place-btn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'ClashDisplay', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.4);
+  transition: opacity 0.15s, transform 0.15s;
+}
+.add-place-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.add-place-btn.visible { display: block; }
+
+/* ── SHARED MODAL ── */
+.e-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 46, 0.45);
+  z-index: 2002;
+}
+.e-backdrop.visible { display: block; }
+
+.e-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 18px;
+  z-index: 2003;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  max-height: 88vh;
+  overflow: hidden;
+}
+.e-modal.visible { display: flex; }
+
+.e-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #F0EDE4;
+  flex-shrink: 0;
+}
+.e-title {
+  font-family: 'ClashDisplay', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.e-close {
+  background: #F0EDE4;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.e-close:hover { background: #E0DCD2; }
+
+.e-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 18px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.e-body::-webkit-scrollbar { width: 4px; }
+.e-body::-webkit-scrollbar-thumb { background: #D8D4CC; border-radius: 4px; }
+
+.e-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #E8E4DC;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.85rem;
+  background: #FAFAF8;
+  color: var(--ink);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.e-input:focus { border-color: var(--coral); }
+textarea.e-input { min-height: 72px; resize: vertical; }
+select.e-input { cursor: pointer; }
+
+.e-btn-primary {
+  padding: 10px 22px;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'ClashDisplay', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.e-btn-primary:hover { opacity: 0.85; }
+
+.e-btn-secondary {
+  padding: 10px 22px;
+  background: #F0EDE4;
+  color: var(--ink);
+  border: none;
+  border-radius: 10px;
+  font-family: 'ClashDisplay', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.e-btn-secondary:hover { background: #E0DCD2; }
+
+.e-error {
+  color: var(--coral);
+  font-size: 0.8rem;
+  min-height: 16px;
+}
