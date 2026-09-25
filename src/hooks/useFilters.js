@@ -1,7 +1,5 @@
 import { useMemo, useState } from 'react';
 
-// Toggles `value` in a multi-select set that has an 'all' sentinel.
-// Mirrors makeMultiHandler from the original vanilla JS file.
 function toggle(current, value, allValue, allOptions) {
   const next = new Set(current);
   if (value === allValue) {
@@ -25,7 +23,7 @@ export function useFilters(places) {
   const [activeCuisines, setActiveCuisines] = useState(new Set(['all']));
   const [activePrices, setActivePrices] = useState(new Set(['all']));
   const [activeRatings, setActiveRatings] = useState(new Set(['all']));
-  const [activeTags, setActiveTags] = useState(new Set()); // empty = no tag filter
+  const [activeTags, setActiveTags] = useState(new Set());
 
   const typeCounts = useMemo(() => {
     const counts = {};

@@ -8,6 +8,9 @@ import TopBar from './components/TopBar';
 import FilterPanel from './components/FilterPanel';
 import EboardControls from './components/EboardControls';
 import LoginModal from './components/LoginModal';
+import AddPlaceModal from './components/AddPlaceModal';
+import AccountSettingsModal from './components/AccountSettingsModal';
+import MyRecommendationsModal from './components/MyRecommendationsModal';
 
 export default function App() {
   const { places, loading, error, reload } = usePlaces();
@@ -16,6 +19,10 @@ export default function App() {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [addPlaceOpen, setAddPlaceOpen] = useState(false);
+  const [editingPlace, setEditingPlace] = useState(null);
+  const [accountSettingsOpen, setAccountSettingsOpen] = useState(false);
+  const [myRecsOpen, setMyRecsOpen] = useState(false);
 
   return (
     <>
@@ -44,13 +51,42 @@ export default function App() {
       <EboardControls
         currentUser={currentUser}
         onOpenLogin={() => setLoginOpen(true)}
-        onOpenAccountSettings={() => console.log('TODO: account settings modal')}
-        onOpenMyRecs={() => console.log('TODO: my recs modal')}
+        onOpenAccountSettings={() => setAccountSettingsOpen(true)}
+        onOpenMyRecs={() => setMyRecsOpen(true)}
         onLogout={logout}
-        onOpenAddPlace={() => console.log('TODO: add/edit place modal')}
+        onOpenAddPlace={() => {
+          setEditingPlace(null);
+          setAddPlaceOpen(true);
+        }}
       />
 
       <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} onLogin={login} />
+
+      <AddPlaceModal
+        open={addPlaceOpen}
+        onClose={() => setAddPlaceOpen(false)}
+        currentUser={currentUser}
+        editingPlace={editingPlace}
+        onSaved={reload}
+      />
+
+      <AccountSettingsModal
+        open={accountSettingsOpen}
+        onClose={() => setAccountSettingsOpen(false)}
+        currentUser={currentUser}
+      />
+
+      <MyRecommendationsModal
+        open={myRecsOpen}
+        onClose={() => setMyRecsOpen(false)}
+        currentUser={currentUser}
+        places={places}
+        onEdit={(place) => {
+          setEditingPlace(place);
+          setAddPlaceOpen(true);
+        }}
+        onDeleted={reload}
+      />
     </>
   );
 }

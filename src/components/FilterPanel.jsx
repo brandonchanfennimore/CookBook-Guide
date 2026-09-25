@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { cuisineEmoji } from '../lib/catConfig';
+import { predefinedTags } from '../lib/formOptions';
 
 const priceOptions = [
   { val: '1', label: '$' },
@@ -12,12 +13,6 @@ const ratingOptions = [
   { val: '1', label: '👍' },
   { val: '2', label: '👍👍' },
   { val: '3', label: '👍👍👍' },
-];
-
-const predefinedTags = [
-  'Quick Bite', 'Cheap Eats', 'Date Night', 'Group Friendly', 'Quiet',
-  'Good WiFi', 'Study Spot', 'Instagrammable', 'Brunch', 'Spicy',
-  'Casual', 'Dessert', 'Late Night', 'Outdoor Seating', 'BYOB',
 ];
 
 function collectTags(places) {
@@ -57,7 +52,6 @@ export default function FilterPanel({ open, onClose, filters, places }) {
       <div className="filter-panel-scroll">
         <div className="filter-panel-title">Filters</div>
 
-        {/* Tags */}
         <div className="filter-section">
           <div className="filter-section-title">Tags</div>
           <div className="filter-section-chips">
@@ -119,7 +113,6 @@ export default function FilterPanel({ open, onClose, filters, places }) {
           </div>
         </div>
 
-        {/* Rating */}
         <div className="filter-section">
           <div className="filter-section-title">Rating</div>
           <div className="filter-section-chips">
@@ -155,7 +148,6 @@ export default function FilterPanel({ open, onClose, filters, places }) {
           </div>
         </div>
 
-        {/* Price */}
         <div className="filter-section">
           <div className="filter-section-title">Price</div>
           <div className="filter-section-chips">
@@ -192,7 +184,6 @@ export default function FilterPanel({ open, onClose, filters, places }) {
           </div>
         </div>
 
-        {/* Cuisine */}
         <div className="filter-section">
           <div className="filter-section-title">Cuisine</div>
           <div className="filter-section-chips">

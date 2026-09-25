@@ -31,5 +31,12 @@ export function useAuth() {
     setCurrentUser(null);
   };
 
-  return { currentUser, authLoading, login, logout };
+  const updateProfile = async (fields) => {
+    const { data, error } = await sbClient.auth.updateUser({ data: fields });
+    if (error) return error.message;
+    setCurrentUser(data.user);
+    return null;
+  };
+
+  return { currentUser, authLoading, login, logout, updateProfile };
 }

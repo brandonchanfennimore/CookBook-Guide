@@ -4,17 +4,18 @@ import { catConfig } from '../lib/catConfig';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY;
 
-// Falls back to plain OpenStreetMap tiles (no key needed) if VITE_CARTO_KEY isn't set.
 const TILE_URL = CARTO_KEY
   ? `https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`
   : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+// Fixed landmark pin, not from Supabase, not filterable. Category: 'college'.
+const HUNTER_COLLEGE = { lat: 40.7685, lng: -73.9645, label: 'College' };
 
 export default function MapView({ places, onSelectPlace }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
 
-  // Init the map once on mount.
   useEffect(() => {
     const map = L.map(containerRef.current, { zoomControl: false }).setView(
       [40.73, -73.99],
@@ -30,6 +31,21 @@ export default function MapView({ places, onSelectPlace }) {
 
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
+    // Static Hunter College landmark pin, added once, independent of the places data.
+    const hunterIcon = L.divIcon({
+      className: '',
+      html: '<div style="font-size:1.8rem;line-height:1;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2))">🎓</div>',
+      iconSize: [36, 36],
+      iconAnchor: [18, 4],
+    });
+    L.marker([HUNTER_COLLEGE.lat, HUNTER_COLLEGE.lng], { icon: hunterIcon })
+      .bindTooltip(HUNTER_COLLEGE.label, {
+        permanent: false,
+        direction: 'top',
+        className: 'hunter-tooltip',
+      })
+      .addTo(map);
+
     mapRef.current = map;
 
     return () => {
@@ -38,7 +54,6 @@ export default function MapView({ places, onSelectPlace }) {
     };
   }, []);
 
-  // Re-render markers whenever places changes.
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;

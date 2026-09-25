@@ -1,6 +1,6 @@
 import { catConfig, cuisineEmoji } from '../lib/catConfig';
 
-export default function PlaceDetailPanel({ place, onClose }) {
+export default function PlaceDetailPanel({ place, onClose, currentUser, onEdit }) {
   const isOpen = !!place;
   const cfg = place ? catConfig[place.category] : null;
 
@@ -46,7 +46,6 @@ export default function PlaceDetailPanel({ place, onClose }) {
 
             <div className="panel-address">📍 {place.address}</div>
 
-            {/* Recommended by, always shown */}
             <div className="panel-section-label">Recommended by</div>
             <div className="panel-recommender">
               <div className="rec-avatar" style={{ background: place.recommender.color }}>
